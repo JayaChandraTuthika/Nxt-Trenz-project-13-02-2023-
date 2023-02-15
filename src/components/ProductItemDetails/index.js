@@ -28,6 +28,18 @@ class ProductItemDetails extends Component {
   componentDidMount() {
     this.getProductDetails()
   }
+  
+  componentDidUpdate(prevProps) {
+    const {match} = this.props
+    const {params} = match
+    const {id} = params
+    console.log('updated')
+
+    if (prevProps.match.params.id !== id) {
+      console.log('id changed and called getProducts')
+      this.getProductDetails()
+    }
+  }
 
   onRedirectToProducts = () => {
     const {history} = this.props
